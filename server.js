@@ -11,7 +11,7 @@ app.use(express.json());
 
 // Set up sessions
 app.use(session({
-    secret: 'your-secret-key', // Replace with a secure secret key
+    secret: 'h00t', // Replace with a secure secret key
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false } // Set secure to true if using HTTPS
@@ -19,7 +19,8 @@ app.use(session({
 
 // Simulated user data (replace with a real database or authentication mechanism)
 const users = [
-    { username: 'John', password: '123' }
+    { username: 'John', password: '1234' },
+    { username: 'Hi', password: '5678'}
 ];
 
 // Serve the main index page
@@ -34,6 +35,7 @@ app.get('/login', (req, res) => {
 
 // Handle login requests (POST)
 app.post('/login', (req, res) => {
+    console.log('Received login attempt:', req.body); // Log the incoming data
     const { username, password } = req.body;
 
     // Find user in the simulated database
@@ -45,8 +47,10 @@ app.post('/login', (req, res) => {
         req.session.username = username;
 
         res.status(200).json({ message: 'Login successful', redirect: '/dashboard' });
+        console.log('Login successful');
     } else {
-        res.status(401).json({ message: 'Invalid username or password' });
+        res.status(401).json({ message: 'Invalid username or password', redirect: '/login' });
+        console.log('Login failed');
     }
 });
 
