@@ -1,13 +1,15 @@
 const express = require('express');
 const path = require('path');
 const session = require('express-session'); // Add express-session
+const bodyParser = require('body-parser');
 const app = express();
 
 // Serve static files (CSS, JS)
 app.use(express.static('public'));
 
 // Middleware to parse JSON data
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set up sessions
 app.use(session({
