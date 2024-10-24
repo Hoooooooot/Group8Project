@@ -66,6 +66,13 @@ app.get('/dashboard', (req, res) => {
     }
 });
 
+
+// Serve error if incorrect url
+app.use((req, res) => {
+    res.status(404);
+    res.send('<h1>Error 404: URL does not exist</h1>')
+})
+
 // Set the port
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

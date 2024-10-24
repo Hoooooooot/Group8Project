@@ -103,3 +103,23 @@ footer {
     color: white;
     border-radius: 8px;
 }
+
+dark-mode-toggle {
+    background-color: #333;
+    color: #fff;
+    border-radius: 3px;
+    padding: 0px 5px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+}
+
+dark-mode-toggle:hover {
+    background-color: #555;
+}
+
+body.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
