@@ -1,4 +1,3 @@
-/* public/css/styles.css */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -44,11 +43,11 @@ body.dark-mode h1 {
     color: #fff;
 }
 
-body.dark-mode dark-mode-toggle{
+body.dark-mode dark-mode-toggle {
     background-color: #fff;
     color: #333;
 }
 
-body.dark-mode dark-mode-toggle:hover{
+body.dark-mode dark-mode-toggle:hover {
     background-color: hsl(0, 0%, 70%);
 }

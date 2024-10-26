@@ -1,7 +1,7 @@
-// public/js/login.js
-signupButton.addEventListener('click', function(event) { // Sign up page button
+// public/js/signup.js
+loginButton.addEventListener('click', function(event) { // login button
     event.preventDefault();
-    window.location.href = '/signup';
+    window.location.href = '/login';
 });
 
 homeButton.addEventListener('click', function(event) { // Home button

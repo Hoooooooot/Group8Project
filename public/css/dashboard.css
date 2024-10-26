@@ -121,5 +121,11 @@ dark-mode-toggle:hover {
 
 body.dark-mode {
     background-color: #333;
-    color: #fff;
+}
+body.dark-mode dark-mode-toggle {
+    background-color: #fff;
+    color: #333;
+}
+body.dark-mode dark-mode-toggle:hover {
+    background-color: hsl(0, 0%, 70%);
 }

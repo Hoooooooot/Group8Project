@@ -1,13 +1,11 @@
-// Get username from the server-side session (this would be injected from server-side logic)
-const username = 'JohnDoe'; // Placeholder, replace with actual username
-
-// Update the username field in the dashboard
-document.getElementById('username').textContent = username;
-
-// Dark Mode Toggle Button Functionality
-const darkModeToggle = document.getElementById('dark-mode-toggle');
+// public/js/dashboard.js
+const darkModeToggle = document.getElementById('dark-mode-toggle'); // Dark mode button
 const body = document.body;
-
+if (localStorage.getItem('darkMode') === 'true') {
+    body.classList.add('dark-mode');
+}
 darkModeToggle.addEventListener('click', () => {
     body.classList.toggle('dark-mode');
+    const isDarkMode = body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDarkMode);
 });
