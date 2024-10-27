@@ -69,7 +69,7 @@ dark-mode-toggle {
     display: block;
     text-align: center;
     position: absolute;
-    top: 25%;
+    top: 20%;
     right: auto;
 }
 
@@ -85,10 +85,10 @@ body.dark-mode .login-container {
     background-color: #666;
     color: #fff;
 }
-body.dark-mode dark-mode-toggle{
+body.dark-mode dark-mode-toggle {
     background-color: #fff;
     color: #333;
 }
-body.dark-mode dark-mode-toggle:hover{
+body.dark-mode dark-mode-toggle:hover {
     background-color: hsl(0, 0%, 70%);
 }

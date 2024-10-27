@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 //conect to database
-mongoose.connect('mongodb://localhost:27017/login')
+mongoose.connect('mongodb+srv://bplouff:sz3NYZ!Ta$WfKU*@hootdb.6sb0r.mongodb.net/TestData')
 
 //check if database connected or not
 .then(()=>{
