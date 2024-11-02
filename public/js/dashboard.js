@@ -9,3 +9,8 @@ darkModeToggle.addEventListener('click', () => {
     const isDarkMode = body.classList.contains('dark-mode');
     localStorage.setItem('darkMode', isDarkMode);
 });
+
+uploadButton.addEventListener('click', function (event) { // Upload button
+    event.preventDefault();
+    window.location.href = '/upload';
+});
