@@ -1,15 +1,18 @@
 // public/js/signup.js
-loginButton.addEventListener('click', function(event) { // login button
+const loginButton = document.getElementById('loginButton'); // Login button
+loginButton.addEventListener('click', function(event) {
     event.preventDefault();
     window.location.href = '/login';
 });
 
-homeButton.addEventListener('click', function(event) { // Home button
+const homeButton = document.getElementById('homeButton'); // Home button
+homeButton.addEventListener('click', function(event) {
     event.preventDefault();
     window.location.href = '/';
 });
 
-dbButton.addEventListener('click', function(event) { // Dashboard button
+const dbButton = document.getElementById('dbButton'); // Dashboard button
+dbButton.addEventListener('click', function(event) {
     event.preventDefault();
     window.location.href = '/dashboard';
 });

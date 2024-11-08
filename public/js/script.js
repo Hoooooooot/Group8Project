@@ -1,10 +1,12 @@
 // public/js/script.js
-loginButton.addEventListener('click', function(event) { // Login button
+const loginButton = document.getElementById('loginButton'); // Login button
+loginButton.addEventListener('click', function(event) {
     event.preventDefault();
     window.location.href = '/login';
 });
 
-signupButton.addEventListener('click', function(event) { // Sign up page button
+const signupButton = document.getElementById('signupButton'); // Sign up page button
+signupButton.addEventListener('click', function(event) {
     event.preventDefault();
     window.location.href = '/signup';
 });

@@ -7,7 +7,7 @@ mongoose.connect('mongodb+srv://bplouff:sz3NYZ!Ta$WfKU*@hootdb.6sb0r.mongodb.net
     console.log('database connected successfully');
 })
 .catch((e)=>{
-    console.log('database failed to connect');
+    console.log('database failed to connect:', e);
 })
 
 //create a schema
