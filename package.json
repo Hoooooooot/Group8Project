@@ -15,9 +15,11 @@
     "ejs": "^3.1.10",
     "express": "^4.21.1",
     "express-session": "^1.18.1",
+    "gridfs-stream": "^1.1.1",
     "mongod": "^2.0.0",
-    "mongodb": "^6.10.0",
-    "mongoose": "^8.8.0"
+    "mongodb": "^6.11.0",
+    "mongoose": "^8.8.3",
+    "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
     "eslint": "^9.13.0"

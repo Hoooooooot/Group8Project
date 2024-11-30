@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+    <link rel="stylesheet" href="/css/upload.css">
+</head>
+<body>
+    <div class="upload-container">
+		<h2>Upload</h2>
+		<form id="uploadForm" method="POST" action="/upload">
+			<input type="file" name="file" required>
+			<button type="submit" id="uploadButton">Upload</button>
+			<button id="homeButton">Home</button>
+			<button id="dbButton">Dashboard</button>
+		</form>
+		<p id="message"></p>
+		</div>
+    <dark-mode-toggle id="dark-mode-toggle">Dark Mode</dark-mode-toggle>
+    <script src="/js/upload.js"></script>
+</body>
+</html>

@@ -32,6 +32,10 @@ app.get('/login', (req, res) => { // Render login page
     res.render("login")
 })
 
+app.get('/upload', (req, res) => { // Render upload page    
+    res.render("upload")
+})
+
 // Handle sign up requests (POST)
 app.post('/signup', async (req, res) => {
     console.log('Received signup attempt:', req.body); // Log sign up attempt
@@ -93,6 +97,10 @@ app.post('/login', async (req, res) => {
         res.send("<h1>Error. If back button does not work, restart server</h1>")
     }
 
+})
+
+app.post('/upload', async (req, res) => { // Handle upload requests
+    console.log('Received upload attempt:'); // Log the incoming data
 })
 
 // Serve error if incorrect url
