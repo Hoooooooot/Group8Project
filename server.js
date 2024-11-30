@@ -100,7 +100,7 @@ app.post('/login', async (req, res) => {
 })
 
 app.post('/upload', async (req, res) => { // Handle upload requests
-    console.log('Received upload attempt:'); // Log the incoming data
+    console.log('Received upload attempt:');
 })
 
 // Serve error if incorrect url
