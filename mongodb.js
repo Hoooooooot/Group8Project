@@ -22,7 +22,24 @@ const logInSchema = new mongoose.Schema({
     }
 })
 
-//create model to collect data
+const fileSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    data: {
+        type: Buffer,
+        required: true
+    },
+    contentType: {
+        type: String,
+        required: true
+    }
+});
+
+// create model to collect data
 const database = new mongoose.model('users',logInSchema)
 
-module.exports = database
+const File = new mongoose.model('File', fileSchema);
+
+module.exports = { database, File};

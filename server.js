@@ -2,8 +2,10 @@ const express = require('express');
 const path = require('path');
 const session = require('express-session'); // Add express-session
 const app = express();
-const database = require("./mongodb")
+const { database, File } = require("./mongodb")
 const bcrypt = require('bcrypt')
+const multer = require('multer'); // for files
+const fs = require('fs'); // for files
 
 app.set('view engine', 'ejs'); // Set view engine to ejs
 app.use(express.static(path.join('public'))); // Serve static files (CSS, JS)
@@ -20,6 +22,10 @@ app.use(session({
     cookie: { secure: false } // Set secure to true if using HTTPS
 }));
 
+// Set up multer
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
 app.get('/', (req, res) => { // Render main page
     res.render("")
 })
@@ -35,6 +41,34 @@ app.get('/login', (req, res) => { // Render login page
 app.get('/upload', (req, res) => { // Render upload page    
     res.render("upload")
 })
+
+// Render file list, doesnt work
+app.get('/files', async (req, res) => {
+    try {
+        const files = await file.find();
+        res.send(files);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error retrieving files from the database.');
+    }
+});
+
+// Render file based on ID, doesnt work
+app.get('/files/:id', async (req, res) => {
+    try {
+        const file = await File.findById(req.params.id);
+
+        if (!file) {
+            return res.status(404).send('File not found');
+        }
+        res.contentType(file.contentType);
+        res.send(file.data);
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Error retrieving the file from the database.');
+    }
+});
 
 // Handle sign up requests (POST)
 app.post('/signup', async (req, res) => {
@@ -99,8 +133,24 @@ app.post('/login', async (req, res) => {
 
 })
 
-app.post('/upload', async (req, res) => { // Handle upload requests
-    console.log('Received upload attempt:');
+// Handle upload requests (POST)
+app.post('/upload', upload.single('pdf'), async (req, res) => {
+    try {
+        const { origname, buffer, type } = req.file;
+
+        const file = new File({
+            name: origname,
+            data: buffer,
+            contentType: type,
+        });
+
+        await file.save();
+        res.status(201).send('File successfully uploaded.');
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send('File upload failed.');
+    }
 })
 
 // Serve error if incorrect url
