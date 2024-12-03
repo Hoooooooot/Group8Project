@@ -12,7 +12,7 @@
             <h1>Welcome, <%= username %>!</h1>
             <nav>
                 <ul>
-                   <dark-mode-toggle id="dark-mode-toggle" >Dark Mode</dark-mode-toggle>
+                    <dark-mode-toggle id="dark-mode-toggle">Dark Mode</dark-mode-toggle>
                     <li><a href="/profile">Profile</a></li>
                     <li><a href="/settings">Settings</a></li>
                     <li><a href="/logout">Logout</a></li>
@@ -20,29 +20,45 @@
             </nav>
         </header>
 
-        <main>
-            <section class="stats">
-                <h2>Dashboard Stats</h2>
-                <div class="stat-box">
-                    <p>Total Users</p>
-                    <span>250</span>
-                </div>
-                <div class="stat-box">
-                    <p>Active Sessions</p>
-                    <span>50</span>
-                </div>
-                <div class="stat-box">
-                    <p>New Messages</p>
-                    <span>5</span>
-                </div>
-            </section>
+        <div class="content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav>
+                    <ul>
+                        <li><a href="/dashboard">Dashboard</a></li>
+                        <li><a href="/analytics">Analytics</a></li>
+                        <li><a href="/projects">Projects</a></li>
+                        <li><a href="/tasks">Tasks</a></li>
+                        <li><a href="/help">Help</a></li>
+                    </ul>
+                </nav>
+            </aside>
 
-            <section class="actions">
-                <h2>Quick Actions</h2>
-                <button onclick="alert('Create new item')">Create New Item</button>
-                <button onclick="alert('View reports')">View Reports</button>
-            </section>
-        </main>
+            <!-- Main Content -->
+            <main>
+                <section class="stats">
+                    <h2>Dashboard Stats</h2>
+                    <div class="stat-box">
+                        <p>Total Users</p>
+                        <span>250</span>
+                    </div>
+                    <div class="stat-box">
+                        <p>Active Sessions</p>
+                        <span>50</span>
+                    </div>
+                    <div class="stat-box">
+                        <p>New Messages</p>
+                        <span>5</span>
+                    </div>
+                </section>
+
+                <section class="actions">
+                    <h2>Quick Actions</h2>
+                    <button onclick="alert('Create new item')">Create New Item</button>
+                    <button onclick="alert('View reports')">View Reports</button>
+                </section>
+            </main>
+        </div>
 
         <footer>
             <p>© 2024 Dashboard, Inc.</p>
