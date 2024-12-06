@@ -9,6 +9,26 @@ body {
     background-color: #f4f4f9;
 }
 
+.button-container {
+    position: fixed;
+    top: 20px; 
+    left: 0px; 
+}
+
+.button-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.button-container button:hover {
+    background-color: #0056b3;
+}
+
 .upload-container {
     max-width: 1000px;
     margin: 0 auto;

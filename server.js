@@ -38,12 +38,36 @@ app.get('/login', (req, res) => { // Render login page
     res.render("login")
 })
 
-app.get('/upload', (req, res) => { // Render upload page    
-    res.render("upload")
-})
+app.get('/upload', async (req, res) => {
+    if (!req.session.username) {
+        return res.redirect('/login');
+    }
 
-// Render file list, doesnt work
-app.get('/files', async (req, res) => {
+    try {
+        // Find the logged-in user
+        const user = await database.findOne({ name: req.session.username });
+
+        if (!user) {
+            return res.redirect('/login');
+        }
+
+        // Fetch files uploaded by this user
+        const userFiles = await File.find({ uploadedBy: user._id });
+
+        res.render('upload', { files: userFiles });
+    } catch (error) {
+        console.error('Error fetching user files:', error);
+        res.status(500).send('Error retrieving files.');
+    }
+});
+
+app.get('/dashboard', (req, res) => {
+    const username = req.session.username;
+    res.render('dashboard', { username });
+});
+
+// Render file list, doesnt work //commented out
+/*app.get('/files', async (req, res) => {
     try {
         const files = await file.find();
         res.send(files);
@@ -68,14 +92,15 @@ app.get('/files/:id', async (req, res) => {
         console.error(error);
         res.status(500).send('Error retrieving the file from the database.');
     }
-});
+});*/
 
 // Handle sign up requests (POST)
 app.post('/signup', async (req, res) => {
     console.log('Received signup attempt:', req.body); // Log sign up attempt
     const userData= {
         name: req.body.username,
-        password: req.body.password
+        password: req.body.password,
+        role: req.body.role
     }
     try{
         // Check if username exists in database
@@ -120,7 +145,8 @@ app.post('/login', async (req, res) => {
         else{
             const passwordMatch = await bcrypt.compare(req.body.password, check.password); // (works when using bcrypt)
             if (passwordMatch || req.body.password === check.password) { // Correct password -> Go to dashboard (remove second part of if statement when using hashed passwords)
-                res.render('dashboard', { username: req.body.username });
+                req.session.username = req.body.username;
+                res.redirect('/dashboard');
             }else {
                 res.send("<h1>Incorrect password. Press the back button to try again.</h1>");
             }
@@ -136,22 +162,32 @@ app.post('/login', async (req, res) => {
 // Handle upload requests (POST)
 app.post('/upload', upload.single('pdf'), async (req, res) => {
     try {
-        const { origname, buffer, type } = req.file;
+        if (!req.session.username) {
+            return res.status(401).send('You must be logged in to upload files.');
+        }
 
+        // Find the logged-in user
+        const user = await database.findOne({ name: req.session.username });
+
+        if (!user) {
+            return res.status(401).send('User not found.');
+        }
+
+        // Save the file
         const file = new File({
-            name: origname,
-            data: buffer,
-            contentType: type,
+            name: req.file.originalname,
+            data: req.file.buffer,
+            contentType: req.file.mimetype,
+            uploadedBy: user._id, // Associate file with the logged-in user
         });
 
         await file.save();
-        res.status(201).send('File successfully uploaded.');
-    }
-    catch (error) {
-        console.error(error);
+        res.redirect('/upload');
+    } catch (error) {
+        console.error('File upload failed:', error);
         res.status(500).send('File upload failed.');
     }
-})
+});
 
 // Serve error if incorrect url
 app.use((req, res) => {

@@ -1,10 +1,5 @@
 // public/js/upload.js
-homeButton.addEventListener('click', function (event) { // Home button
-    event.preventDefault();
-    window.location.href = '/';
-});
-
-dbButton.addEventListener('click', function (event) { // Dashboard button
+dbButton.addEventListener('click', function(event) { // Dashboard button
     event.preventDefault();
     window.location.href = '/dashboard';
 });
