@@ -66,33 +66,24 @@ app.get('/dashboard', (req, res) => {
     res.render('dashboard', { username });
 });
 
-// Render file list, doesnt work //commented out
-/*app.get('/files', async (req, res) => {
-    try {
-        const files = await file.find();
-        res.send(files);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Error retrieving files from the database.');
-    }
-});
-
-// Render file based on ID, doesnt work
+// Render file list
 app.get('/files/:id', async (req, res) => {
     try {
+        // Find the file by its ID
         const file = await File.findById(req.params.id);
 
         if (!file) {
             return res.status(404).send('File not found');
         }
+
+        // Serve the file with its content type
         res.contentType(file.contentType);
         res.send(file.data);
+    } catch (error) {
+        console.error('Error retrieving file:', error);
+        res.status(500).send('Error retrieving the file.');
     }
-    catch (error) {
-        console.error(error);
-        res.status(500).send('Error retrieving the file from the database.');
-    }
-});*/
+});
 
 // Handle sign up requests (POST)
 app.post('/signup', async (req, res) => {
