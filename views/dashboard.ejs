@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome, <%= username %>!</h1>
+            <nav>
+                <ul>
+                   <dark-mode-toggle id="dark-mode-toggle" >Dark Mode</dark-mode-toggle>
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/settings">Settings</a></li>
+                    <li><a href="/login">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="stats">
+                <h2>Dashboard Stats</h2>
+                <div class="stat-box">
+                    <p>Total Users</p>
+                    <span>250</span>
+                </div>
+                <div class="stat-box">
+                    <p>Active Sessions</p>
+                    <span>50</span>
+                </div>
+                <div class="stat-box">
+                    <p>New Messages</p>
+                    <span>5</span>
+                </div>
+            </section>
+
+            <section class="actions">
+                <h2>Quick Actions</h2>
+                <button id="uploadButton">Upload New Item</button>
+                <button onclick="alert('View reports')">View Reports</button>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2024 Dashboard, Inc.</p>
+        </footer>
+    </div>
+
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

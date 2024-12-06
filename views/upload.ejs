@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+	<link rel="stylesheet" href="/css/upload.css">
+</head>
+<body>
+    <div class="upload-container">
+		<h2>Upload New Item</h2>
+		<form id="uploadForm" method="POST" action="/upload" enctype="multipart/form-data">
+			<input type="file" name="pdf" accept=".pdf" required>
+			<button type="submit">Upload</button>
+		</form>
+		<h3>Your Uploaded PDFs</h3>
+		<ul id="fileContainer">
+		    <% files.forEach(file => { %>
+		        <li>
+		            <a href="/files/<%= file._id %>" target="_blank"><%= file.name %></a>
+		        </li>
+		    <% }) %>
+		</ul>
+	</div>
+    <div class="button-container">
+        <button id="dbButton">Dashboard</button>
+    </div>
+    <dark-mode-toggle id="dark-mode-toggle">Dark Mode</dark-mode-toggle>
+    <script src="/js/upload.js"></script>
+</body>
+</html>

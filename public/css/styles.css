@@ -1,4 +1,3 @@
-/* public/css/styles.css */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -15,8 +14,40 @@ button {
     padding: 10px 20px;
     border: none;
     cursor: pointer;
+    font-size: 16px;
 }
 
 button:hover {
     background-color: #0056b3;
+}
+
+dark-mode-toggle {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+dark-mode-toggle:hover {
+    background-color: #555;
+}
+
+body.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-mode h1 {
+    color: #fff;
+}
+
+body.dark-mode dark-mode-toggle {
+    background-color: #fff;
+    color: #333;
+}
+
+body.dark-mode dark-mode-toggle:hover {
+    background-color: hsl(0, 0%, 70%);
 }
