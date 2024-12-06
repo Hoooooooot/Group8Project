@@ -9,8 +9,18 @@ darkModeToggle.addEventListener('click', () => {
     const isDarkMode = body.classList.contains('dark-mode');
     localStorage.setItem('darkMode', isDarkMode);
 });
-
+document.getElementById('search-button').addEventListener('click', function () {
+    const query = document.getElementById('search-input').value;
+    if (query) {
+        alert(`Searching for: ${query}`);
+        // Perform a search or redirect logic here
+        // e.g., window.location.href = `/search?q=${encodeURIComponent(query)}`;
+    } else {
+        alert('Please enter a search term!');
+    }
+});
 uploadButton.addEventListener('click', function (event) { // Upload button
     event.preventDefault();
     window.location.href = '/upload';
 });
+

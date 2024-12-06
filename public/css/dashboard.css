@@ -7,14 +7,17 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
 }
 
 .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
+/* Header */
 header {
     display: flex;
     justify-content: space-between;
@@ -48,8 +51,77 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
+/* Content Layout */
+.content {
+    display: flex;
+    flex: 1;
+}
+
+/* Search Bar Styling */
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.search-bar input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px 0 0 5px;
+    flex: 1; /* Ensures the input stretches to fill available space */
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #ffffff;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+}
+
+.sidebar nav ul li {
+    margin-bottom: 15px; /* Space between links */
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 18px;
+    display: block; /* Ensures clickable area covers the full link */
+}
+
+.sidebar nav ul li a:hover {
+    color: #0056b3;
+}
+
+/* Main Content */
 main {
-    margin-top: 20px;
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
 }
 
 section.stats, section.actions {
@@ -80,6 +152,7 @@ section.stats, section.actions {
     font-weight: bold;
 }
 
+/* Buttons */
 button {
     padding: 10px 20px;
     margin-right: 10px;
@@ -95,6 +168,7 @@ button:hover {
     background-color: #218838;
 }
 
+/* Footer */
 footer {
     text-align: center;
     margin-top: 20px;
@@ -104,6 +178,7 @@ footer {
     border-radius: 8px;
 }
 
+/* Dark Mode Toggle */
 dark-mode-toggle {
     background-color: #333;
     color: #fff;
@@ -119,13 +194,48 @@ dark-mode-toggle:hover {
     background-color: #555;
 }
 
+/* Dark Mode Styling */
 body.dark-mode {
     background-color: #333;
+    color: #f9f9f9;
 }
+
+body.dark-mode header {
+    background-color: #444;
+}
+
 body.dark-mode dark-mode-toggle {
     background-color: #fff;
     color: #333;
 }
+
 body.dark-mode dark-mode-toggle:hover {
     background-color: hsl(0, 0%, 70%);
+}
+
+body.dark-mode .sidebar {
+    background-color: #444;
+    color: #fff;
+}
+
+body.dark-mode .sidebar nav ul li a {
+    color: #fff;
+}
+
+body.dark-mode .sidebar nav ul li a:hover {
+    color: #ddd;
+}
+
+body.dark-mode main {
+    background-color: #555;
+}
+
+body.dark-mode section.stats, 
+body.dark-mode section.actions {
+    background-color: #666;
+    color: #f4f4f4;
+}
+
+body.dark-mode footer {
+    background-color: #444;
 }
